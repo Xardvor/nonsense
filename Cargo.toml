@@ -1,0 +1,7 @@
+[package]
+name = "tracery"
+version = "0.1.0"
+authors = ["m_losev <m_losev@wargaming.net>"]
+
+[dependencies]
+rand = "*"
