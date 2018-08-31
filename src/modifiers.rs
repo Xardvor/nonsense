@@ -40,9 +40,30 @@ impl Modifiers {
             }
         };
 
+        let plural: Processor = |input: &str| -> String {
+            let iter = input.chars();
+            match iter.last() {
+                Some(c) if c == 's' || c == 'x' || c == 'h' => {
+                    String::from(input) + "es"
+                },
+                Some('y') => {
+                    let wo_y = &input[..input.len()-1];
+                    match wo_y.chars().last() {
+                        Some(v) if Modifiers::is_vowel(v) => {
+                             String::from(input) + "s"
+                        },
+                        _ => String::from(wo_y) + "ies",
+                    }
+                },
+                Some(_) => String::from(input) + "s",
+                None => String::from(input),
+            }
+        };
+
         let mut map: HashMap<String, Processor> = HashMap::new();
         map.insert(String::from("capitalize"), capitalize);
         map.insert(String::from("a"), article);
+        map.insert(String::from("s"), plural);
 
         Modifiers {
             mods: map,

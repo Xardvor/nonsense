@@ -25,7 +25,6 @@ impl Storyteller {
 	}
 
 	fn process_token(&self, token: &str, mods: &Vec<String>) -> String {
-		println!("{}", token);
 		let variants = self.tokens.get(token).expect("Wrong token!");
 
 		let index = rand::thread_rng().gen_range(0, variants.len());
