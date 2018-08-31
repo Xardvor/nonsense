@@ -60,10 +60,30 @@ impl Modifiers {
             }
         };
 
+        let ed: Processor = |input: &str| -> String {
+            let iter = input.chars();
+            match iter.last() {
+                Some('e') => {
+                    String::from(input) + "d"
+                },
+                Some('y') => {
+                    let wo_y = &input[..input.len()-1];
+                    match wo_y.chars().last() {
+                        Some(v) if Modifiers::is_vowel(v) => {
+                             String::from(input) + "d"
+                        },
+                        _ => String::from(wo_y) + "ied",
+                    }
+                },
+                _ => String::from(input) + "ed"
+            }
+        };
+
         let mut map: HashMap<String, Processor> = HashMap::new();
         map.insert(String::from("capitalize"), capitalize);
         map.insert(String::from("a"), article);
         map.insert(String::from("s"), plural);
+        map.insert(String::from("ed"), ed);
 
         Modifiers {
             mods: map,
