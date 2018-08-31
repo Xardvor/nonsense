@@ -28,10 +28,6 @@ impl Modifiers {
         }
     }
 
-    pub fn have_modifiers(input: &str) -> bool {
-        input.split('.').count() > 1
-    }
-
     pub fn apply(&self, input: &str, mods_list: &Vec<String>) -> String {
         let mut to_process = String::from(input);
         for i in 0..mods_list.len() {

@@ -6,7 +6,7 @@ use std::vec::Vec;
 use std::collections::HashMap;
 
 fn main() {
-	let origin: Vec<String> = vec![String::from("#mood and #mood, the #path was #mood with #substance"), String::from("#nearby #path #amove through the #path, filling me with #substance")];
+	let origin: Vec<String> = vec![String::from("#mood.capitalize and #mood, the #path was #mood with #substance"), String::from("#nearby.capitalize #path #amove through the #path, filling me with #substance")];
 	let nearby = vec![String::from("far away"), String::from("ahead"), String::from("behind me")];
 	let substance = vec![String::from("light"), String::from("reflections"), String::from("mist"), String::from("shadow"), String::from("darkness"), String::from("brightness"), String::from("gaiety"), String::from("merriment")];
 	let mood = vec![String::from("overcast"), String::from("alight"), String::from("clear"), String::from("darkened"), String::from("blue"), String::from("shadowed"), String::from("illuminated"), String::from("silver"), String::from("cool"), String::from("warm"), String::from("summer-warmed")];
